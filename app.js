@@ -45,4 +45,16 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
+require('dotenv').config();  // Load environment variables from .env
+
+const mongoose = require('mongoose');
+
+// Use the DB_URI from your .env file
+mongoose.connect(process.env.DB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected...'))
+.catch(err => console.log(err));
+
 module.exports = app;
