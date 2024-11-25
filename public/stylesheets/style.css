@@ -1,8 +1,130 @@
+/* Global Styles */
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  font-family: Arial, sans-serif; /* Font family */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Light background for the page */
 }
 
 a {
   color: #00B7FF;
+}
+
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+header {
+  background-color: #333;  /* Dark background for header */
+  color: white;
+  padding: 20px 0;
+}
+
+.header-container {
+  width: 80%;  /* Limit width for content */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 2.5rem; /* Header title font size */
+  margin: 0;
+}
+
+/* Navigation Button Styles */
+.nav-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-btn {
+  text-decoration: none;
+  background-color: #555;  /* Button background color */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.nav-btn:hover {
+  background-color: #777;  /* Lighter color on hover */
+}
+
+/* Main Content Styles */
+main {
+  width: 80%;
+  margin: 30px auto;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #333;  /* Dark footer background */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Additional Styling for Page */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Splash Container */
+.splash-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px; /* Padding around the content */
+  background: #333;  /* Dark background */
+  color: white;
+  border-radius: 10px; /* Rounded corners */
+  max-width: 800px;  /* Limit width */
+  margin: 0 auto;  /* Center the container horizontally */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Shadow for floating effect */
+}
+
+/* Splash Content */
+.splash-content {
+  text-align: center;
+  max-width: 600px; /* Limit the content width */
+  width: 100%; /* Ensure it takes full width of the container */
+}
+
+/* Heading Styling */
+.splash-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Paragraph Styling */
+.splash-content p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+
+/* Button Styling */
+.btn-start {
+  text-decoration: none;
+  background-color: #000000;  
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+
+.btn-start:hover {
+  background-color: #646161;  /* Darker blue on hover */
 }
