@@ -1,0 +1,115 @@
+<div class="container">
+  <h1>Assignment Tracker</h1>
+
+  <!-- Form for adding new assignments -->
+  <form id="createAssignmentForm" action="/assignments" method="POST">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" id="description" name="description" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="dueDate">Due Date</label>
+      <input type="date" id="dueDate" name="dueDate" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Assignment</button>
+  </form>
+
+  <hr>
+
+  <!-- List of assignments -->
+  <h2>Assignments</h2>
+  <ul>
+    <% assignments.forEach(function(assignment) { %>
+      <li>
+        <strong><%= assignment.title %></strong><br>
+        <%= assignment.description %><br>
+        Due: <%= new Date(assignment.dueDate).toLocaleDateString() %><br>
+        <a href="/assignments/<%= assignment._id %>/edit">Edit</a> |
+        <form action="/assignments/<%= assignment._id %>?_method=DELETE" method="POST" style="display:inline;">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+</div>
+
+<!-- Edit Assignment Form (hidden) -->
+<div id="editFormContainer" style="display:none;">
+  <h2>Edit Assignment</h2>
+  <form id="editAssignmentForm" method="POST">
+    <input type="hidden" id="editId" name="id">
+    <div class="form-group">
+      <label for="editTitle">Title</label>
+      <input type="text" id="editTitle" name="title" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="editDescription">Description</label>
+      <input type="text" id="editDescription" name="description" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="editDueDate">Due Date</label>
+      <input type="date" id="editDueDate" name="dueDate" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Save Changes</button>
+    <button type="button" class="btn btn-secondary" onclick="closeEditForm()">Cancel</button>
+  </form>
+</div>
+
+<!-- JavaScript for CRUD Operations -->
+<script>
+  // Function to edit assignment
+  function editAssignment(id, title, description, dueDate) {
+    document.getElementById('editId').value = id;
+    document.getElementById('editTitle').value = title;
+    document.getElementById('editDescription').value = description;
+    document.getElementById('editDueDate').value = new Date(dueDate).toISOString().split('T')[0];
+    document.getElementById('editFormContainer').style.display = 'block';
+  }
+
+  // Close the edit form
+  function closeEditForm() {
+    document.getElementById('editFormContainer').style.display = 'none';
+  }
+
+  // Confirm delete
+  function confirmDelete() {
+    return confirm("Are you sure you want to delete this assignment?");
+  }
+
+  // Handle create form submission
+  document.getElementById('createAssignmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    fetch('/assignments', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      // On success, refresh the page or append the new assignment to the list
+      location.reload();  // Or use your own logic to update the list
+    })
+    .catch(error => console.error('Error:', error));
+  });
+
+  // Handle edit form submission
+  document.getElementById('editAssignmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const id = document.getElementById('editId').value;
+    fetch('/assignments/' + id + '?_method=PUT', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      // On success, update the assignment on the page or reload
+      location.reload();  // Or update the specific assignment in the list
+    })
+    .catch(error => console.error('Error:', error));
+  });
+</script>

@@ -2,7 +2,6 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
   font-family: Arial, sans-serif; /* Font family */
   margin: 0;
   padding: 0;
@@ -12,7 +11,6 @@ body {
 a {
   color: #00B7FF;
 }
-
 
 .container {
   width: 100%;
@@ -126,5 +124,110 @@ a {
 }
 
 .btn-start:hover {
-  background-color: #646161;  /* Darker blue on hover */
+  background-color: #646161;  
+}
+
+/* Assignment Tracker Specific Styles */
+
+/* Form Styles */
+
+.container {
+  color: white; /* Set the font color to white */
+}
+
+form {
+  background-color: #333;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #fff;
+}
+
+input[type="text"],
+input[type="date"],
+button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+  border-color: #00B7FF; /* Matching the link color */
+  outline: none;
+}
+
+button {
+  background-color: #555; /* Match existing button colors */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #777; /* Match hover color */
+}
+
+/* Assignment List Styles */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li strong {
+  font-size: 1.2em;
+}
+
+button.btn-info {
+  background-color: #00B7FF; /* Matching the link color */
+}
+
+button.btn-info:hover {
+  background-color: #007bb3; /* Darker blue on hover */
+}
+
+button.btn-danger {
+  background-color: #dc3545;
+}
+
+button.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  form,
+  #editFormContainer {
+    padding: 15px;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  button {
+    width: 100%;
+  }
 }
